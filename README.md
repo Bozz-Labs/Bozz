@@ -1,0 +1,2 @@
+# Bozz
+The perfect terminal
