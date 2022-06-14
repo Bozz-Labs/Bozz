@@ -125,6 +125,32 @@ def main():
             main()
         else:
             exit()
+    elif begin == 'susie':
+        print('Hello my name is susie')
+        sleep(0.5)
+        print('Thats susie with a z')
+        sleep(0.5)
+        print('And if you think you can sue me')
+        sleep(0.5)
+        print('Spell susie with a z')
+        restart = input('Continue to menu? yes/no ').lower()
+        if restart == 'yes':
+            main()
+        else:
+            exit()
+    elif begin == 'parking ticket':
+        print('Who parked their car')
+        sleep(1)
+        print('On my sandwich')
+        sleep(1.5)
+        print('I did')
+        sleep(0.5)
+        print('Arghhhhhh')
+        restart = input('Continue to menu? yes/no ').lower()
+        if restart == 'yes':
+            main()
+        else:
+            exit()
     elif begin == 'multiplication':
         first_number = int(input('First number: '))
         second_number = int(input('Second number: '))
@@ -144,7 +170,7 @@ def main():
         else:
             exit()
     elif begin == 'help':
-        print('Welcome to Bozz! Bozz is an interactive task manager to help you with everyday tasks like math or maybe you want some entertainment! type "commands" to see the full list of commands')
+        print('Welcome to Bozz! Bozz is an interactive terminal to help you with everyday tasks like math or maybe you want some entertainment! type "commands" to see the full list of commands')
         restart = input('Continue to menu? yes/no ').lower()
         if restart == 'yes':
             main()
