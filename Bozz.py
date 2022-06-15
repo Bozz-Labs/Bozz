@@ -88,6 +88,7 @@ startMessage = input('Type start to begin loading Bozz: ')
 if startMessage == 'start':
     print('Loading Bozz')
 
+from cgitb import reset
 from os import kill
     
 from time import sleep
@@ -97,11 +98,11 @@ startup = ['loading .', 'loading ..', 'loading ...', '', 'loading .', 'loading .
 for stage in startup:
     print(stage)
     sleep(0.1)
-print('completed')
+    print('completed')
 
-nameMessage1 = input('What is your first name? ')
-nameMessage2 = input('What is your last name? ')
-print('Hello ' + nameMessage1 + ' ' + nameMessage2)
+    nameMessage1 = input('What is your first name? ')
+    nameMessage2 = input('What is your last name? ')
+    print('Hello ' + nameMessage1 + ' ' + nameMessage2)
 
 def main():
 
@@ -125,6 +126,8 @@ def main():
             main()
         else:
             exit()
+    elif begin == 'restart':
+        main()        
     elif begin == 'susie':
         print('Hello my name is susie')
         sleep(0.5)
