@@ -83,28 +83,26 @@ def BA():
             main()
         else:
             exit()
-startMessage = input('Type start to begin loading Bozz: ')
-
-if startMessage == 'start':
-    print('Loading Bozz')
-
-from cgitb import reset
-from os import kill
     
 from time import sleep
 
-startup = ['loading .', 'loading ..', 'loading ...', '', 'loading .', 'loading ..', 'loading ...', '', 'loading .', 'loading ..', 'loading ...', '', 'loading .', 'loading ..', 'loading ...', '', 'Loading completed', '', 'starting .', 'starting ..', 'starting ...', '', 'starting .', 'starting ..', 'starting ...', '', 'starting .', 'starting ..', 'starting ...', '']
+def main():
 
-for stage in startup:
-    print(stage)
-    sleep(0.1)
-    print('completed')
+    startup = ['loading .', 'loading ..', 'loading ...', '', 'loading .', 'loading ..', 'loading ...', '', 'loading .', 'loading ..', 'loading ...', '', 'loading .', 'loading ..', 'loading ...', '', 'Loading completed', '', 'starting .', 'starting ..', 'starting ...', '', 'starting .', 'starting ..', 'starting ...', '', 'starting .', 'starting ..', 'starting ...', '']
 
+    startMessage = input('Type start to begin loading Bozz: ')
+
+    if startMessage == 'start':
+        print('Loading Bozz')
+
+    for stage in startup:
+        print(stage)
+        sleep(0.1)
+
+    print('Done')
     nameMessage1 = input('What is your first name? ')
     nameMessage2 = input('What is your last name? ')
     print('Hello ' + nameMessage1 + ' ' + nameMessage2)
-
-def main():
 
     begin = input('Type the task you want Bozz to fufill or help to recieve help ')
 
@@ -121,34 +119,6 @@ def main():
         first_number = int(input('First number: '))
         second_number = int(input('Second number: '))
         print("Sum: ", first_number - second_number)
-        restart = input('Continue to menu? yes/no ').lower()
-        if restart == 'yes':
-            main()
-        else:
-            exit()
-    elif begin == 'restart':
-        main()        
-    elif begin == 'susie':
-        print('Hello my name is susie')
-        sleep(0.5)
-        print('Thats susie with a z')
-        sleep(0.5)
-        print('And if you think you can sue me')
-        sleep(0.5)
-        print('Spell susie with a z')
-        restart = input('Continue to menu? yes/no ').lower()
-        if restart == 'yes':
-            main()
-        else:
-            exit()
-    elif begin == 'parking ticket':
-        print('Who parked their car')
-        sleep(1)
-        print('On my sandwich')
-        sleep(1.5)
-        print('I did')
-        sleep(0.5)
-        print('Arghhhhhh')
         restart = input('Continue to menu? yes/no ').lower()
         if restart == 'yes':
             main()
