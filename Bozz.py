@@ -1,3 +1,122 @@
+def pong():
+
+    import turtle
+
+    wn = turtle.Screen()
+    wn.title('Pong')
+    wn.bgcolor('black')
+    wn.setup(width=800, height=600)
+    wn.tracer(0)
+
+    # Score
+    score_a = 0
+    score_b = 0
+
+    # Paddle A
+    paddle_a = turtle.Turtle()
+    paddle_a.speed(0)
+    paddle_a.shape('square')
+    paddle_a.color('white')
+    paddle_a.shapesize(stretch_wid=5, stretch_len=1)
+    paddle_a.penup()
+    paddle_a.goto(-350, 0)
+
+    # Paddle B
+    paddle_b = turtle.Turtle()
+    paddle_b.speed(0)
+    paddle_b.shape('square')
+    paddle_b.color('white')
+    paddle_b.shapesize(stretch_wid=5, stretch_len=1)
+    paddle_b.penup()
+    paddle_b.goto(350, 0)
+
+    # Ball
+    ball = turtle.Turtle()
+    ball.speed(0)
+    ball.shape('square')
+    ball.color('white')
+    ball.penup()
+    ball.goto(0, 0)
+    ball.dx = 0.2
+    ball.dy = -0.2
+
+    # Pen
+    pen = turtle.Turtle()
+    pen.speed(0)
+    pen.color('white')
+    pen.penup()
+    pen.hideturtle()
+    pen.goto(0, 260)
+    pen.write('Player 1: 0  Player 2: 0', align='center', font=('Courier', 24, 'normal'))
+
+    # Function
+    def paddle_a_up():
+        y = paddle_a.ycor()
+        y += 20
+        paddle_a.sety(y)
+
+    def paddle_a_down():
+        y = paddle_a.ycor()
+        y -= 20
+        paddle_a.sety(y)
+
+    def paddle_b_up():
+        y = paddle_b.ycor()
+        y += 20
+        paddle_b.sety(y)
+
+    def paddle_b_down():
+            y = paddle_b.ycor()
+            y -= 20
+            paddle_b.sety(y)
+
+    # Keyboard binding
+    wn.listen()
+    wn.onkeypress(paddle_a_up, 'w')
+    wn.onkeypress(paddle_a_down, 's')
+    wn.onkeypress(paddle_b_up, 'Up')
+    wn.onkeypress(paddle_b_down, 'Down')
+
+    # Main game loop
+    while True:
+        wn.update()
+
+        # Move the ball
+        ball.setx(ball.xcor() + ball.dx)
+        ball.sety(ball.ycor() + ball.dy)
+
+        # Border checking
+        if ball.ycor() > 290:
+            ball.sety(290)
+            ball.dy *= -1
+
+        if ball.ycor() < -290:
+            ball.sety(-290)
+            ball.dy *= -1
+
+        if ball.xcor() > 390:
+            ball.setx(390)
+            ball.goto(0, 0)
+            score_a += 1
+            pen.clear()
+            pen.write('Player 1: {}  Player 2: {}'.format(score_a, score_b), align='center', font=('Courier', 24, 'normal'))
+    
+        if ball.xcor() < -390:
+            ball.setx(390)
+            ball.goto(0, 0)
+            score_b += 1
+            pen.clear()
+            pen.write('Player 1: {}  Player 2: {}'.format(score_a, score_b), align='center', font=('Courier', 24, 'normal'))
+
+    # Paddle and ball collisions
+        if (ball.xcor() > 340 and ball.xcor() < 350) and (ball.ycor() < paddle_b.ycor() + 40 and ball.ycor() > paddle_b.ycor() -40):
+            ball.setx(340)
+            ball.dx *= -1
+
+        if (ball.xcor() < -340 and ball.xcor() > -350) and (ball.ycor() < paddle_a.ycor() + 40 and ball.ycor() > paddle_a.ycor() -40):
+            ball.setx(-340)
+            ball.dx *= -1
+
 class rpsParticipant:
     def __init__(self, name):
         self.name = name
@@ -84,25 +203,27 @@ def BA():
         else:
             exit()
     
+from io import open_code
 from time import sleep
 
+startup = ['loading .', 'loading ..', 'loading ...', '', 'loading .', 'loading ..', 'loading ...', '', 'loading .', 'loading ..', 'loading ...', '', 'loading .', 'loading ..', 'loading ...', '', 'Loading completed', '', 'starting .', 'starting ..', 'starting ...', '', 'starting .', 'starting ..', 'starting ...', '', 'starting .', 'starting ..', 'starting ...', '']
+
+startMessage = input('Type start to begin loading Bozz: ')
+
+if startMessage == 'start':
+    print('Loading Bozz')
+
+for stage in startup:
+    print(stage)
+    sleep(0.1)
+
+print('Done')
+nameMessage1 = input('What is your first name? ')
+nameMessage2 = input('What is your last name? ')
+print('Hello ' + nameMessage1 + ' ' + nameMessage2)
+
+
 def main():
-
-    startup = ['loading .', 'loading ..', 'loading ...', '', 'loading .', 'loading ..', 'loading ...', '', 'loading .', 'loading ..', 'loading ...', '', 'loading .', 'loading ..', 'loading ...', '', 'Loading completed', '', 'starting .', 'starting ..', 'starting ...', '', 'starting .', 'starting ..', 'starting ...', '', 'starting .', 'starting ..', 'starting ...', '']
-
-    startMessage = input('Type start to begin loading Bozz: ')
-
-    if startMessage == 'start':
-        print('Loading Bozz')
-
-    for stage in startup:
-        print(stage)
-        sleep(0.1)
-
-    print('Done')
-    nameMessage1 = input('What is your first name? ')
-    nameMessage2 = input('What is your last name? ')
-    print('Hello ' + nameMessage1 + ' ' + nameMessage2)
 
     begin = input('Type the task you want Bozz to fufill or help to recieve help ')
 
@@ -166,18 +287,27 @@ def main():
             exit()
     elif begin == 'play':
         gameMenu = input(nameMessage1 + ' ' + nameMessage2 + ', what do want to play? You can currently play: rps against friends (rps), Bozz adventure (BA) ')
-    if gameMenu == 'rps':
-            rpsGame.start()
-    elif gameMenu == 'BA':
-        BAstart = input(nameMessage1 + ' ' + nameMessage2 + ' Welcome to the faraway land of Bozz! There is a mission waiting for you! Do you accept? yes/no ')
-        if BAstart == 'yes':
-            BA()
-        else:
-            print('wimp...')
-    restart = input('Continue to menu? yes/no ').lower()
-    if restart == 'yes':
-        main()
-    else:
-        exit()
-
+        if gameMenu == 'rps':
+                rpsGame.start()
+        elif gameMenu == 'BA':
+            BAstart = input(nameMessage1 + ' ' + nameMessage2 + ' Welcome to the faraway land of Bozz! There is a mission waiting for you! Do you accept? yes/no ')
+            if BAstart == 'yes':
+                BA()
+            else:
+                print('wimp...')
+                restart = input('Continue to menu? yes/no ').lower()
+                if restart == 'yes':
+                    main()
+                else:
+                    exit()
+        elif gameMenu == 'pong':
+            playPong = input('Play Pong? (y/n) ')
+            if playPong == 'y':
+                pong()
+            else:
+                restart = input('Continue to menu? yes/no ').lower()
+                if restart == 'yes':
+                    main()
+                else:
+                    exit()
 main()
