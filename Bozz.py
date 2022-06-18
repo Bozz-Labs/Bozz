@@ -296,14 +296,11 @@ def main():
         else:
             exit()
     elif begin == 'commands':
-        print('Here is a list of commands: \
-            addition: Whole number addition\
-            subtraction: Whole number subtraction\
-            multiplication: Whole number multiplication\
-            division: Whole number division\
-            play: displays the game menu\
-            commands: displays this list\
-            help: displays the help menu'
+        print('''Here are all Bozz commands:
+        play: shows the game menu
+        calculator: opens calculator
+        help: displays help menu
+        commands: shows this list'''
             )
         restart = input('Continue to menu? yes/no ').lower()
         if restart == 'yes':
@@ -311,7 +308,7 @@ def main():
         else:
             exit()
     elif begin == 'play':
-        gameMenu = input(nameMessage1 + ' ' + nameMessage2 + ', what do want to play? You can currently play: rps against friends (rps), Bozz adventure (BA) ')
+        gameMenu = input(nameMessage1 + ' ' + nameMessage2 + ', what do want to play? You can currently play: rps against friends (rps), Bozz adventure (BA), pong (pong) ')
         if gameMenu == 'rps':
                 rpsGame.start()
         elif gameMenu == 'BA':
@@ -326,8 +323,12 @@ def main():
                 else:
                     exit()
         elif gameMenu == 'pong':
-            playPong = input('Play Pong? (y/n) ')
+            playPong = input('''Controls:
+            player 1: w = up, s = down
+            player 2: up arrow key = up, down arrow key = down
+                                Start Pong? (y/n) ''')
             if playPong == 'y':
+                
                 pong()
             else:
                 restart = input('Continue to menu? yes/no ').lower()
