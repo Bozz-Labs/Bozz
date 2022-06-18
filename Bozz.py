@@ -1,3 +1,62 @@
+def calculator():
+    math_type = input('Welcome to the calculator! Choose: +, -, *, / ')
+    if math_type == '+':
+        first_number = int(input('First Number: '))
+        second_number = int(input('Second number: '))
+        sum = first_number + second_number
+        print('Sum: ', sum)
+        restart_calculator = input('Restart Calculator? y/n ')
+        if restart_calculator == 'y':
+            calculator()
+        else:
+            restart = input('Continue to menu? yes/no ').lower()
+            if restart == 'yes':
+                main()
+            else:
+                exit()
+    elif math_type == '-':
+        first_number = int(input('First Number: '))
+        second_number = int(input('Second number: '))
+        sum = first_number - second_number
+        print('Sum: ', sum)
+        restart_calculator = input('Restart Calculator? y/n ')
+        if restart_calculator == 'y':
+            calculator()
+        else:
+            restart = input('Continue to menu? yes/no ').lower()
+            if restart == 'yes':
+                main()
+            else:
+                exit()
+    elif math_type == '*':
+        first_number = int(input('First Number: '))
+        second_number = int(input('Second number: '))
+        sum = first_number * second_number
+        print('Sum: ', sum)
+        restart_calculator = input('Restart Calculator? y/n ')
+        if restart_calculator == 'y':
+            calculator()
+        else:
+            restart = input('Continue to menu? yes/no ').lower()
+            if restart == 'yes':
+                main()
+            else:
+                exit()
+    elif math_type == '/':
+        first_number = int(input('First Number: '))
+        second_number = int(input('Second number: '))
+        sum = first_number / second_number
+        print('Sum: ', sum)
+        restart_calculator = input('Restart Calculator? y/n ')
+        if restart_calculator == 'y':
+            calculator()
+        else:
+            restart = input('Continue to menu? yes/no ').lower()
+            if restart == 'yes':
+                main()
+            else:
+                exit()
+
 def pong():
 
     import turtle
@@ -227,42 +286,8 @@ def main():
 
     begin = input('Type the task you want Bozz to fufill or help to recieve help ')
 
-    if begin == 'addition':
-        first_number = int(input('First number: '))
-        second_number = int(input('Second number: '))
-        print("Sum: ", first_number + second_number)
-        restart = input('Continue to menu? yes/no ').lower()
-        if restart == 'yes':
-            main()
-        else:
-            exit()
-    elif begin == 'subtrction':
-        first_number = int(input('First number: '))
-        second_number = int(input('Second number: '))
-        print("Sum: ", first_number - second_number)
-        restart = input('Continue to menu? yes/no ').lower()
-        if restart == 'yes':
-            main()
-        else:
-            exit()
-    elif begin == 'multiplication':
-        first_number = int(input('First number: '))
-        second_number = int(input('Second number: '))
-        print("Sum: ", first_number * second_number)
-        restart = input('Continue to menu? yes/no ').lower()
-        if restart == 'yes':
-            main()
-        else:
-            exit()
-    elif begin == 'division':
-        first_number = int(input('First number: '))
-        second_number = int(input('Second number: '))
-        print("Sum: ", first_number / second_number)
-        restart = input('Continue to menu? yes/no ').lower()
-        if restart == 'yes':
-            main()
-        else:
-            exit()
+    if begin == 'calculator':
+        calculator()
     elif begin == 'help':
         print('Welcome to Bozz! Bozz is an interactive terminal to help you with everyday tasks like math or maybe you want some entertainment! type "commands" to see the full list of commands')
         restart = input('Continue to menu? yes/no ').lower()
