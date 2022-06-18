@@ -1,2 +1,2 @@
 1, must have at least python 3.10 installed on your computer(3.11 prefered)
-2, to use, you must have windows powershell, git cmd, command promt open and type the file location
+2, to use, you must have windows powershell, git cmd or vscode treminal  open and type the file location
