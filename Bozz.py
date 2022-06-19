@@ -1,3 +1,7 @@
+import time
+from time import sleep
+import random
+import turtle
 def calculator():
     math_type = input('Welcome to the calculator! Choose: +, -, *, / ')
     if math_type == '+':
@@ -58,8 +62,6 @@ def calculator():
                 exit()
 
 def pong():
-
-    import turtle
 
     wn = turtle.Screen()
     wn.title('Pong')
@@ -262,7 +264,6 @@ def BA():
         else:
             exit()
     
-from io import open_code
 from time import sleep
 
 startup = ['loading .', 'loading ..', 'loading ...', '', 'loading .', 'loading ..', 'loading ...', '', 'loading .', 'loading ..', 'loading ...', '', 'loading .', 'loading ..', 'loading ...', '', 'Loading completed', '', 'starting .', 'starting ..', 'starting ...', '', 'starting .', 'starting ..', 'starting ...', '', 'starting .', 'starting ..', 'starting ...', '']
