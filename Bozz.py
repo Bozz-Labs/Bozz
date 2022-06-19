@@ -3,7 +3,7 @@ from time import sleep
 import random
 import turtle
 def calculator():
-    math_type = input('Welcome to the calculator! Choose: +, -, *, / ')
+    math_type = input('Welcome to the BozzTR calculator! Choose: +, -, *, / ')
     if math_type == '+':
         first_number = int(input('First Number: '))
         second_number = int(input('Second number: '))
@@ -268,10 +268,10 @@ from time import sleep
 
 startup = ['loading .', 'loading ..', 'loading ...', '', 'loading .', 'loading ..', 'loading ...', '', 'loading .', 'loading ..', 'loading ...', '', 'loading .', 'loading ..', 'loading ...', '', 'Loading completed', '', 'starting .', 'starting ..', 'starting ...', '', 'starting .', 'starting ..', 'starting ...', '', 'starting .', 'starting ..', 'starting ...', '']
 
-startMessage = input('Type start to begin loading Bozz: ')
+startMessage = input('Type start to begin loading BozzTR: ')
 
 if startMessage == 'start':
-    print('Loading Bozz')
+    print('Loading BozzTR')
 
 for stage in startup:
     print(stage)
@@ -285,7 +285,7 @@ print('Hello ' + nameMessage1 + ' ' + nameMessage2)
 
 def main():
 
-    begin = input('Type the task you want Bozz to fufill or help to recieve help ')
+    begin = input('Type the task you want BozzTR to fufill or help to recieve help ')
 
     if begin == 'calculator':
         calculator()
@@ -297,7 +297,7 @@ def main():
         else:
             exit()
     elif begin == 'commands':
-        print('''Here are all Bozz commands:
+        print('''Here are all BozzTR commands:
         play: shows the game menu
         calculator: opens calculator
         help: displays help menu
@@ -309,7 +309,7 @@ def main():
         else:
             exit()
     elif begin == 'play':
-        gameMenu = input(nameMessage1 + ' ' + nameMessage2 + ', what do want to play? You can currently play: rps against friends (rps), Bozz adventure (BA), pong (pong) ')
+        gameMenu = input(nameMessage1 + ' ' + nameMessage2 + ', what do want to play? You can currently play: rps against friends (rps), BozzTR adventure (BA), pong (pong) ')
         if gameMenu == 'rps':
                 rpsGame.start()
         elif gameMenu == 'BA':
