@@ -1,4 +1,4 @@
-# Bozz
+# BozzTR
 
 The perfect terminal
 
