@@ -4,7 +4,7 @@ The perfect terminal
 
 --------------------------------Description-------------------------------------
 
-Bozz was made to help you with math, entertainment ar maybe even a laugh now and 
+BozzTR was made to help you with math, entertainment ar maybe even a laugh now and 
 again.
 
 --------------------------------Instructions------------------------------------
