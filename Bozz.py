@@ -2,6 +2,263 @@ import time
 from time import sleep
 import random
 import turtle
+
+def run_go():
+
+    wn = turtle.Screen()
+    wn.title('Run & Go')
+    wn.bgcolor('black')
+    wn.setup(width=600, height=600)
+    wn.tracer(0)
+
+    enemy_speed = 15
+
+    enemies = []
+
+    score = 0
+
+    text = turtle.Turtle()
+    text.speed(0)
+    text.shape('square')
+    text.color('white')
+    text.penup()
+    text.hideturtle()
+    text.goto(0, 260)
+    text.write('Move the ammo to the red square', align='center', font=('Courier', 24, 'normal'))
+
+    # Player
+    player = turtle.Turtle()
+    player.speed(0)
+    player.shape('square')
+    player.color('white')
+    player.penup()
+    player.goto(0, 0)
+
+    # Ammo
+    ammo = turtle.Turtle()
+    ammo.speed(0)
+    ammo.shape('square')
+    ammo.turtlesize(0.5)
+    ammo.color('yellow')
+    ammo.penup()
+    ammo.goto(0, 0)
+
+    # Start
+    start = turtle.Turtle()
+    start.speed(0)
+    start.shape('square')
+    start.color('red')
+    start.penup()
+    start.goto(0, 80)
+
+    # Enemy
+    enemy = turtle.Turtle()
+    enemy.speed(0)
+    enemy.shape('square')
+    enemy.color('grey')
+    enemy.penup()
+    enemy.hideturtle()
+    enemy.goto(0, 80)
+
+    # Function
+    def player_up():
+        y = player.ycor()
+        y += 20
+        player.sety(y)
+
+    def player_down():
+        y = player.ycor()
+        y -= 20
+        player.sety(y)
+
+    def player_left():
+        x = player.xcor()
+        x -= 20
+        player.setx(x)
+
+    def player_right():
+        x = player.xcor()
+        x += 20
+        player.setx(x)
+
+    def ammo_up():
+        y = ammo.ycor()
+        y += 20
+        ammo.sety(y)
+
+    def ammo_down():
+        y = ammo.ycor()
+        y -= 20
+        ammo.sety(y)
+
+    def ammo_left():
+        x = ammo.xcor()
+        x -= 20
+        ammo.setx(x)
+
+    def ammo_right():
+        x = ammo.xcor()
+        x += 20
+        ammo.setx(x)
+
+    wn.listen()
+    wn.onkeypress(player_up, 'w')
+    wn.onkeypress(player_left, 'a')
+    wn.onkeypress(player_down, 's')
+    wn.onkeypress(player_right, 'd')
+    wn.onkeypress(ammo_up, 'Up')
+    wn.onkeypress(ammo_down, 'Down')
+    wn.onkeypress(ammo_left, 'Left')
+    wn.onkeypress(ammo_right, 'Right')
+    wn.onkeypress(wn.bye, 'q')
+
+
+    while True:
+        wn.update()
+
+        if enemy.distance(ammo) < 20:
+            enemy.goto(random.randint(-290, 290), random.randint(-290, 290))
+            text.clear()
+            text.write('Score: {}'.format(score), align='center', font=('Courier', 24, 'normal'))
+            score += 1
+
+        if enemy.distance(player) < 20:
+            text.clear()
+            text.write('Game Over', align='center', font=('Courier', 24, 'normal'))
+            time.sleep(3)
+            wn.bye()
+        
+        if ammo.distance(start) < 20:
+            start.goto(1000, 1000)
+            enemy.showturtle()
+            enemy.goto(random.randint(-290, 290), random.randint(-290, 290))
+            enemies.append(enemy)
+            text.clear()
+            text.write('Move ammo to gray square', align='center', font=('Courier', 24, 'normal'))
+            def follow_player():
+                enemy.setheading(enemy.towards(player))
+                enemy.forward(1)
+                wn.ontimer(follow_player, enemy_speed)
+                
+                follow_player()
+
+def snake():
+
+    delay = 0.1
+
+    # Screen setup
+
+    wn = turtle.Screen()
+    wn.title('Snake')
+    wn.bgcolor('black')
+    wn.setup(width=600, height=600)
+    wn.tracer(0) # Turns off screen updates
+
+    # Snake head
+    head = turtle.Turtle()
+    head.speed(0)
+    head.shape('square')
+    head.color('white')
+    head.penup()
+    head.goto(0, 0)
+    head.direction = 'stop'
+
+    # Snake food
+    food = turtle.Turtle()
+    food.speed(0)
+    food.shape('square')
+    food.color('red')
+    food.penup()
+    food.goto(0, 100)
+
+    segments = []
+
+
+
+    # Functions
+    def go_up():
+        head.direction = 'up'
+    def go_down():
+        head.direction = 'down'
+
+    def go_left():
+        head.direction = 'left'
+
+    def go_right():
+        head.direction = 'right'
+    def move():
+        if head.direction == 'up':
+            y = head.ycor()
+            head.sety(y + 20)
+        
+        if head.direction == 'down':
+            y = head.ycor()
+            head.sety(y - 20)
+        
+        if head.direction == 'left':
+            x = head.xcor()
+            head.setx(x - 20)
+        
+        if head.direction == 'right':
+            x = head.xcor()
+            head.setx(x + 20)
+
+    # Keyboard bindings
+    wn.listen()
+    wn.onkeypress(go_up, 'w')
+    wn.onkeypress(go_down, 's')
+    wn.onkeypress(go_left, 'a')
+    wn.onkeypress(go_right, 'd')
+
+    # Main game loop
+    while True:
+        wn.update()
+
+        # Check for collision with border
+        if head.xcor()>290 or head.xcor()<-290 or head.ycor()>290 or head.ycor()<-290:
+            time.sleep(1)
+            head.goto(0, 0)
+            head.direction = 'stop'
+
+            # Hide segments
+            for segment in segments:
+                segment.goto(1000, 1000)
+
+            # Clear segments list
+            segments = []
+
+        # Check for collision with food
+
+        if head.distance(food) < 20:
+            # Move food
+            food.goto(random.randint(-290, 290), random.randint(-290, 290))
+
+            # Add segment
+            new_segment = turtle.Turtle()
+            new_segment.speed(0)
+            new_segment.shape('square')
+            new_segment.color('grey')
+            new_segment.penup()
+            segments.append(new_segment)
+
+        # Move end segment first
+        for index in range(len(segments)-1, 0, -1):
+            x = segments[index-1].xcor()
+            y = segments[index-1].ycor()
+            segments[index].goto(x, y)
+        
+        # Move segment 0 to snake head
+        if len(segments) > 0:
+            x = head.xcor()
+            y = head.ycor()
+            segments[0].goto(x, y)
+
+        move()
+
+        time.sleep(delay)
+
+    wn.mainloop()
+
 def calculator():
     math_type = input('Welcome to the BozzTR calculator! Choose: +, -, *, / ')
     if math_type == '+':
@@ -263,8 +520,6 @@ def BA():
             main()
         else:
             exit()
-    
-from time import sleep
 
 startup = ['loading .', 'loading ..', 'loading ...', '', 'loading .', 'loading ..', 'loading ...', '', 'loading .', 'loading ..', 'loading ...', '', 'loading .', 'loading ..', 'loading ...', '', 'Loading completed', '', 'starting .', 'starting ..', 'starting ...', '', 'starting .', 'starting ..', 'starting ...', '', 'starting .', 'starting ..', 'starting ...', '']
 
@@ -323,6 +578,10 @@ def main():
                     main()
                 else:
                     exit()
+        elif gameMenu == 'snake':
+            snake()
+        elif gameMenu == 'run & go':
+            run_go()
         elif gameMenu == 'pong':
             playPong = input('''Controls:
             player 1: w = up, s = down
