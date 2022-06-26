@@ -139,8 +139,8 @@ def run_go():
                 enemy.setheading(enemy.towards(player))
                 enemy.forward(1)
                 wn.ontimer(follow_player, enemy_speed)
-                
-                follow_player()
+
+            follow_player()
 
 def snake():
 
@@ -580,6 +580,8 @@ def main():
                     exit()
         elif gameMenu == 'snake':
             snake()
+        elif gameMenu == 'run_go':
+            run_go()
         elif gameMenu == 'run & go':
             run_go()
         elif gameMenu == 'pong':
@@ -596,4 +598,7 @@ def main():
                     main()
                 else:
                     exit()
+    else:
+        print('Not a command')
+        main()
 main()
