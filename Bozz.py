@@ -2,6 +2,7 @@ import time
 from time import sleep
 import random
 import turtle
+import sys
 
 def run_go():
 
@@ -141,6 +142,31 @@ def run_go():
                 wn.ontimer(follow_player, enemy_speed)
 
             follow_player()
+
+def rgstartup():
+
+    print('Loading Run & Go')
+
+    time.sleep(0.5)
+
+    toolbar_width = 20
+
+    sys.stdout.write("[%s]" % (" " * toolbar_width))
+    sys.stdout.flush()
+    sys.stdout.write("\b" * (toolbar_width+1))
+
+    for i in range(toolbar_width):
+        time.sleep(0.2)
+        sys.stdout.write("-")
+        sys.stdout.flush()
+
+    sys.stdout.write("]\n")
+
+    print('Done')
+
+    time.sleep(0.5)
+
+    run_go()
 
 def snake():
 
@@ -581,9 +607,7 @@ def main():
         elif gameMenu == 'snake':
             snake()
         elif gameMenu == 'run_go':
-            run_go()
-        elif gameMenu == 'run & go':
-            run_go()
+            rgstartup()
         elif gameMenu == 'pong':
             playPong = input('''Controls:
             player 1: w = up, s = down

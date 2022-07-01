@@ -1,3 +1,4 @@
+from platform import java_ver
 import turtle
 import time
 import random

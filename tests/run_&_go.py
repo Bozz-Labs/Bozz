@@ -1,6 +1,7 @@
 import turtle
 import random
 import time
+import sys
 
 def run_go():
 
@@ -140,4 +141,30 @@ def run_go():
                 wn.ontimer(follow_player, enemy_speed)
 
             follow_player()
-run_go()    
+
+def startup():
+
+    print('Loading Run & Go')
+
+    time.sleep(0.5)
+
+    toolbar_width = 20
+
+    sys.stdout.write("[%s]" % (" " * toolbar_width))
+    sys.stdout.flush()
+    sys.stdout.write("\b" * (toolbar_width+1))
+
+    for i in range(toolbar_width):
+        time.sleep(0.2)
+        sys.stdout.write("-")
+        sys.stdout.flush()
+
+    sys.stdout.write("]\n")
+
+    print('Done')
+
+    time.sleep(0.5)
+
+    run_go()
+
+startup()
